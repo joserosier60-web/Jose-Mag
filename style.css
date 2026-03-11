@@ -1,0 +1,658 @@
+/* Reset de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Section d’accueil */
+.home {
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5rem;
+  padding-top: 100px;
+  background: linear-gradient(135deg, #0d0d0d 40%, #e63946 100%);
+}
+
+.home-img img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 25px #e63946;
+  opacity: 0;
+  transform: scale(0.3); translateY(50px);
+}
+
+.home-img img.show {
+  animation: bounce-up 1s ease forwards, glow 4s infinite alternate;
+}
+
+/* Effet rebond à l’ouverture */
+@keyframes bounce-in {
+  0%   { transform: scale(0.3) translateY(50px); opacity: 0; }
+  50%  { transform: scale(1.1) translateY(-10px); opacity: 1; }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* Halo lumineux pulsant */
+@keyframes glow {
+  from { box-shadow: 0 0 15px #e63946; }
+  to   { box-shadow: 0 0 35px #410b0b; }
+}
+
+
+.home-content {
+  max-width: 600px;
+  text-align: left;
+}
+
+.home-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.home-content h3 {
+  font-size: 2rem;
+  color: #e63946;
+  margin-bottom: 1rem;
+}
+
+.home-content p {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+/* Bouton */
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: #e63946;
+  color: #000;
+  border-radius: 30px;
+  font-size: 1.6rem;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #000;
+  color: #e63946;
+}
+
+/* animation au bouton */
+@keyframes zoom-btn {
+  0% { transform: scale(1.1);}
+  50% { transform: scale(1);}
+  100% { transform: scale(1.1);}
+}
+
+/*appliquer aux bouton*/
+.btn {
+  animation: zoom-btn 1.5s ease-in-out infinite;
+}
+
+
+
+/* Icônes sociales */
+.social-icons {
+  margin-top: 2rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  margin-right: 1rem;
+  border-radius: 50%;
+  background: transparent;
+  color: #e63946;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #e63946;
+  color: #fff;
+  transform: scale(1.2);
+}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  padding: 6rem 10% 5rem;
+  background: linear-gradient(to bottom, #8b0000, #000);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Titres et paragraphes */
+section h1, section h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #e63946;
+}
+
+section p {
+  text-align: center;
+  font-size: 1.6rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Nom en rouge avec effet lumineux */
+.home-content h1 .intro {
+  color: #fff;
+}
+
+.home-content h1 .name {
+  color: #e63946;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    to right,
+    #e63946 0%,
+    #000 50%,
+    #e63946 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Barre de navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220%; /* mobile */
+  height: 100vh;
+  background: #0d0d0d;
+  color: #fff;
+  padding-top: 2rem;
+  z-index: 1200;
+}
+
+@media (max-width:768px){
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    background: transparent;
+    z-index: 1200;
+  }
+  .menu-toggle {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 10px;
+    width: 30px;
+    height: 22px;
+  }
+} 
+
+/* Bouton hamburger animé */
+.menu-toggle {
+  width: 35px;
+  height: 35;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.menu-toggle img {
+  height: auto;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 10px #e63946;
+  transition: transform 0.3s ease;
+}
+.menu-toggle .active img {
+  transform: rotate(90deg);
+}
+
+/* Animation quand actif */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(6px);
+  background: #e63946;
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-6px);
+  background: #e63946;
+}
+
+.menu-toggle.active {
+  color: #e63946;
+}
+
+.menu-toggle:hover,
+.menu-toggle:active {
+  color: #ff4d4d;
+  transform: scale(1.2);
+}
+
+/* Menu mobile */
+.menu {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100vh;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 1000;
+  padding-top: 4rem;
+}
+
+.menu.active {
+  display: flex;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
+}
+
+/* Version mobile */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-img img {
+    max-width: 200px;
+  }
+
+  .home-content {
+    text-align: center;
+  }
+
+  .home-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .home-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .home-content p {
+    font-size: 1.2rem;
+  }
+
+  section {
+    margin-left: 0;
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  section h1, section h2 {
+    font-size: 2rem;
+  }
+
+  section p {
+    font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: relative;
+  }
+}
+
+/* Version ordinateur */
+@media (min-width: 769px) {
+  .navbar {
+    width: 220px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    transform: none;
+    opacity: 1;
+    position: static;
+    height: auto;
+  }
+
+  .menu li a {
+    width: 100%;
+  }
+
+  .menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 1rem;
+    transition: 0.3s;
+  }
+  .menu li a:hover {
+    background: #e63946;
+    color: #fff;
+    transform: scale(1.05);
+    border-radius: 5px;
+  }
+  .menu li a:active,
+  .menu li a:focus {
+    background: #e63946;
+    color: #fff;
+    transform: scale(1.05);
+    border: 5px;
+  }
+
+  section {
+    margin-left: 220px;
+    padding: 5rem 10%;
+  }
+
+  .home {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+/* Animation photo */
+.photo-animate {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: opacity 2s ease, transform 2s ease;
+}
+
+.photo-animate.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Style des cartes transparentes */
+section:not(.home) .card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+  color: #fff;
+
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease; 
+}
+
+section:not(.home) .card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* bouton indique de scrooler en bas/haut */
+.site-footer {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  font-size: 0.9rem;
+  color: #fff;
+  opacity: 0.7;
+  z-index: 1500;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+
+
+.scroll-down.hidden {
+  display: none;
+}
+
+
+.scroll-down, .scroll-up {
+  position: fixed;
+  bottom: 30px;
+  z-index: 2000;
+}
+
+.scroll-down { left: 40%; }
+.scroll-up   { left: 60%; }
+
+/* Cercle blanc */
+.scroll-down .circle, .scroll-up .circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #0d0d0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+/* Flèches rouges */
+.scroll-down .arrow, .scroll-up .arrow {
+  font-size: 2rem;
+  color: #e63946;
+  line-height: 1;
+}
+
+/* Animation rebond */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* Masquer la flèche vers le haut au début */
+.scroll-up.hidden {
+  display: none;
+}
+
+/* Masquer la flèche vers le bas en bas de page */
+.scroll-down.hidden {
+  display: none;
+}
+
+/* pour faire aligné les cage dans le menu Mes diplôme */
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  padding: 20px 0;
+  width: 90%;
+  max-width: 600px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #fff; /* ligne rouge */
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin: 40px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: #000; /* cercle noir */
+  border: 3px solid #fff; /* contour rouge */
+  border-radius: 50%;
+}
+
+.timeline-content {
+  background: #000;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  width: 45%;
+  text-align: center;
+}
+
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-left: 55%;
+  text-align: center;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-right: 55%;
+  text-align: center;
+}
+
+.timeline-content h3 {
+  margin: 0;
+  color: #e63946;
+}
+
+.timeline-content .date {
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Animation respiration (zoom doux) */
+@keyframes breathe {
+  0% { transform: scale(1);}
+  50% { transform: scale(1.15);}
+  100% { transform: scale(1);}
+}
+
+/* Animation glow (halo rouge/noir) */
+@keyframes glow {
+  0% { box-shadow: 0 0 10px #e63946;}
+  50% { box-shadow: 0 0 20px #000;}
+  100% { box-shadow: 0 0 10px #e63946;}
+}
+
+
+
+
+/* Appliquer au cadres */
+.timeline-content {
+  animation: breathe 6s ease-in-out infinite, glow 4s infinite alternate;
+}
+
+
+
+/* pour le menu comptences */
+
+#competences {
+  background: linear-gradient(to bottom, #8b0000, #000);
+  padding: 50px 20px;
+  color: #fff;
+}
+
+#competences h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.skill {
+  margin-bottom: 25px;
+}
+
+.skill-info {
+  display: grid;
+  grid-template-columns: 150px 60px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  max-width: 700px;
+  margin: 0 auto 5px;
+}
+
+.progress-bar {
+  background: #333;
+  border-radius: 20px;
+  height: 10px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 1s ease-in-out;
+}
+
+/* Couleurs et tailles */
+.progress.html { width: 45%; background: limegreen; }
+.progress.css { width: 20%; background: orange; }
+.progress.js { width: 20%; background: orange; }
+.progress.python { width: 15%; background: red; }
+
+/* animation */
+.progress {
+  height: 100%;
+  border-radius: 20px;
+  width: 0; /* ✅ commence vide */
+}
+
+.progress.html { background: limegreen; }
+.progress.css { background: orange; }
+.progress.js { background: orange; }
+.progress.python { background: red; }
+
+/* Animation remplissage */
+@keyframes fill {
+  from { width: 0; }
+  to { width: var(--target-width); }
+}
+
